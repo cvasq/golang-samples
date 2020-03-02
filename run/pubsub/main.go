@@ -73,7 +73,7 @@ func HelloPubSub(w http.ResponseWriter, r *http.Request) {
 	if name == "" {
 		name = "World"
 	}
-	log.Printf("Hello %s!", name)
+	log.Printf("Message ID: %v   Hello %s!", m.Message.ID, name)
 
 	seconds := 120
 	now := time.Now()
