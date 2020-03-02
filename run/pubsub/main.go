@@ -23,6 +23,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"time"
 )
 
 func main() {
@@ -73,6 +74,18 @@ func HelloPubSub(w http.ResponseWriter, r *http.Request) {
 		name = "World"
 	}
 	log.Printf("Hello %s!", name)
+
+	seconds := 120
+	now := time.Now()
+	jobID := now.Unix()
+
+	log.Printf("%v: Starting Work\n", jobID)
+	for i := 1; i <= seconds; i++ {
+		time.Sleep(1 * time.Second)
+		log.Printf("%v: Count %v\n", jobID, i)
+
+	}
+	log.Printf("%v: End Work", jobID)
 }
 
 // [END run_pubsub_handler]
